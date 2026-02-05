@@ -1,6 +1,16 @@
 import tailwindCssAnimate from 'tailwindcss-animate'
-import { fontFamily } from 'tailwindcss/defaultTheme'
+import { fontFamily as defaultFontFamily } from 'tailwindcss/defaultTheme'
 import { fonts } from './src/config/fonts'
+
+const sansFallback = defaultFontFamily?.sans ?? [
+  'ui-sans-serif',
+  'system-ui',
+  'sans-serif',
+  '"Apple Color Emoji"',
+  '"Segoe UI Emoji"',
+  '"Segoe UI Symbol"',
+  '"Noto Color Emoji"',
+]
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -17,8 +27,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        inter: ['Inter', ...fontFamily.sans],
-        manrope: ['Manrope', ...fontFamily.sans],
+        inter: ['Inter', ...sansFallback],
+        manrope: ['Manrope', ...sansFallback],
       },
       borderRadius: {
         lg: 'var(--radius)',
